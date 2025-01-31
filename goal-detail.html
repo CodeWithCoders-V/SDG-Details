@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDGs Goals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .goal-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .goal-image {
+            width: 300px;
+            height: auto;
+            margin-right: 20px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .goal-content {
+            max-width: 800px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .back-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="goal-detail" class="goal-container">
+        <!-- Goal Image -->
+        <img id="goal-image" class="goal-image" src="" alt="Goal Image">
+        
+        <!-- Goal Content -->
+        <div class="goal-content">
+            <button class="back-button" onclick="goBack()">Go Back</button>
+            <h2 id="goal-title"></h2>
+            <div id="goal-description"></div>
+        </div>
+    </div>
+
+    <script>
+        // Fetch the goal parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const goal = urlParams.get('goal');
+
+        function goBack() {
+            window.history.back();
+        }
+
+        // Populate the content based on the goal
+        function loadGoalDetail(goal) {
+            const goalDetailContainer = document.getElementById('goal-detail');
+            const goalTitle = document.getElementById('goal-title');
+            const goalImage = document.getElementById('goal-image');
+            const goalDescription = document.getElementById('goal-description');
+
+            // Switch block to load content based on goal parameter
+            switch (goal) {
+                case 'no-poverty':
+                    goalTitle.textContent = 'No Poverty';
+                    goalImage.src = 'images/1.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Despite significant progress in reducing global poverty—more than halving poverty rates since 2000—there is still a long way to go. Around one in ten people in developing regions live on less than the international poverty line of US$1.90 per day, with millions more earning just slightly above this amount. While Eastern and Southeastern Asia have seen major advancements, poverty remains a critical issue, especially in Sub-Saharan Africa, where up to 42% of the population still lives below the poverty line.
+Poverty is not simply the absence of income. It extends to a lack of access to basic necessities such as food, clean water, healthcare, and education. It also encompasses social exclusion, hunger, malnutrition, and the inability to participate in decision-making processes. These barriers prevent individuals and communities from thriving and fully contributing to society.
+To end poverty, we need more than just economic growth; we need inclusive economic growth that benefits everyone, especially the most vulnerable. Creating sustainable job opportunities, providing access to education and skills development, and ensuring fair wages are essential steps in lifting people out of poverty. This approach can break the cycle of poverty and help families build a better future.
+Moreover, social protection systems are critical in addressing the needs of the most vulnerable populations, particularly in disaster-prone regions. These systems provide safety nets that help people recover from economic shocks and disasters, preventing them from falling deeper into poverty. When implemented effectively, social protection systems strengthen communities' resilience and can help end extreme poverty, even in the most impoverished areas.
+Health and Nutrition are key components in fighting poverty. Healthy children and families contribute to increased prosperity, and immunization plays a vital role in this. Vaccines not only prevent diseases that could otherwise be fatal, but they also support proper nutrition by helping children avoid illnesses that impair nutrient absorption. Malnourished children are far more vulnerable to diseases like diarrhoea, measles, and pneumonia—many of which can be prevented through vaccination. By combining immunization with nutrition interventions, we can reduce child mortality, improve overall health outcomes, and set the foundation for stronger, more prosperous communities.
+The ultimate goal of the No Poverty SDG is to create a world where everyone has the opportunity to live a life of dignity, free from the constraints of poverty. This can only be achieved by addressing the root causes of poverty, creating opportunities for economic participation, and ensuring access to health, education, and social protection for all.
+</p>
+                    `;
+                    break;
+                case 'zero-hunger':
+                    goalTitle.textContent = 'Zero Hunger';
+                    goalImage.src = 'images/2.jpg';
+                    goalDescription.innerHTML = `
+                        <p>End hunger, achieve food security and improved nutrition, and promote sustainable agriculture. Hunger and malnutrition are critical challenges that hinder development and prosperity.</p>
+                    `;
+                    break;
+                case 'good-health':
+                    goalTitle.textContent = 'Good Health and Well-being';
+                    goalImage.src = 'images/3.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Ensure healthy lives and promote well-being for all at all ages. Good health is essential for sustainable development, and universal health coverage is critical for reaching SDG goals.</p>
+                    `;
+                    break;
+                case 'quality-education':
+                    goalTitle.textContent = 'Quality Education';
+                    goalImage.src = 'images/4.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Ensure inclusive, equitable, and quality education and promote lifelong learning opportunities for all. Education is a fundamental human right and a key driver for sustainable development.</p>
+                    `;
+                    break;
+                case 'gender-equality':
+                    goalTitle.textContent = 'Gender Equality';
+                    goalImage.src = 'images/5.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Achieve gender equality and empower all women and girls. Gender equality is not only a fundamental human right but a necessary foundation for a peaceful, prosperous, and sustainable world.</p>
+                    `;
+                    break;
+                case 'clean-water':
+                    goalTitle.textContent = 'Clean Water and Sanitation';
+                    goalImage.src = 'images/6.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Ensure availability and sustainable management of water and sanitation for all. Clean water is essential for life, health, and dignity, yet billions of people lack access to safe water.</p>
+                    `;
+                    break;
+                case 'affordable-energy':
+                    goalTitle.textContent = 'Affordable and Clean Energy';
+                    goalImage.src = 'images/7.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Ensure access to affordable, reliable, sustainable, and modern energy for all. Energy is essential for economic growth and sustainable development.</p>
+                    `;
+                    break;
+                case 'decent-work':
+                    goalTitle.textContent = 'Decent Work and Economic Growth';
+                    goalImage.src = 'images/8.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Promote sustained, inclusive, and sustainable economic growth, full and productive employment, and decent work for all. Decent work is essential to reduce poverty and inequality.</p>
+                    `;
+                    break;
+                case 'industry-innovation':
+                    goalTitle.textContent = 'Industry, Innovation, and Infrastructure';
+                    goalImage.src = 'images/9.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Build resilient infrastructure, promote inclusive and sustainable industrialization, and foster innovation. Innovation and technology are key drivers of economic development and transformation.</p>
+                    `;
+                    break;
+                case 'reduced-inequalities':
+                    goalTitle.textContent = 'Reduced Inequalities';
+                    goalImage.src = 'images/9.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Reduce inequality within and among countries. Inequality affects everyone and can lead to conflicts, instability, and unequal access to opportunities.</p>
+                    `;
+                    break;
+                case 'sustainable-cities':
+                    goalTitle.textContent = 'Sustainable Cities and Communities';
+                    goalImage.src = 'images/10.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Make cities and human settlements inclusive, safe, resilient, and sustainable. Urbanization offers opportunities but also challenges related to housing, transport, and environment.</p>
+                    `;
+                    break;
+                case 'climate-action':
+                    goalTitle.textContent = 'Climate Action';
+                    goalImage.src = 'images/11.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Take urgent action to combat climate change and its impacts. Climate change is a global challenge that affects all countries, and we must work together to mitigate its effects.</p>
+                    `;
+                    break;
+                case 'life-below-water':
+                    goalTitle.textContent = 'Life Below Water';
+                    goalImage.src = 'images/12.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Conserve and sustainably use the oceans, seas, and marine resources for sustainable development. Oceans are essential to life on Earth, providing food, oxygen, and climate regulation.</p>
+                    `;
+                    break;
+                case 'life-on-land':
+                    goalTitle.textContent = 'Life on Land';
+                    goalImage.src = 'images/13.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Protect, restore, and promote sustainable use of terrestrial ecosystems, manage forests sustainably, combat desertification, halt and reverse land degradation, and halt biodiversity loss.</p>
+                    `;
+                    break;
+                case 'peace-justice':
+                    goalTitle.textContent = 'Peace, Justice, and Strong Institutions';
+                    goalImage.src = 'images/14.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Promote peaceful and inclusive societies for sustainable development, provide access to justice for all, and build effective, accountable institutions at all levels.</p>
+                    `;
+                    break;
+                case 'partnerships-goals':
+                    goalTitle.textContent = 'Partnerships for the Goals';
+                    goalImage.src = 'images/15.jpg';
+                    goalDescription.innerHTML = `
+                        <p>Strengthen the means of implementation and revitalize the global partnership for sustainable development. Partnerships are key to achieving the SDGs through collaboration and shared responsibility.</p>
+                    `;
+                    break;
+
+                // Default case when goal is not found
+                default:
+                    goalDetailContainer.innerHTML = `
+                        <h2>Goal Not Found</h2>
+                        <p>Sorry, we could not find information for this goal.</p>
+                    `;
+            }
+        }
+
+        // Load the goal detail content when the page is loaded
+        window.onload = () => loadGoalDetail(goal);
+    </script>
+
+</body>
+</html>
